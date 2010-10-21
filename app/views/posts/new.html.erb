@@ -1,2 +1,20 @@
 <h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<%= form_for @post do |f| %>
+  <% f.fields_for :category do |c_f| %>
+
+    <% if @post.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this record from being saved:</h2>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p><%= c_f.label :category %> <%= c_f.text_field :category %></p>
+    <p><%= f.label :image %> <%= f.file_field :image %></p>
+    <p><%= f.submit "Submit" %></p>
+  <%- end -%>
+<%- end -%>
+
