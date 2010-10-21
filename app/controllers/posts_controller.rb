@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.find params[:id]
+    @post = Post.find params[:id]
   end
 
   def new
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    category = Category.find_by_category params["post"]["category_attributes"]["name"]
+    category = Category.find_by_name params["post"]["category_attributes"]["name"]
     if category
       params["post"]["category_id"] = category.id
       params["post"].delete "category_attributes"
