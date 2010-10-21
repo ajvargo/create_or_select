@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
   respond_to :html
+  def index
+    @posts = Post.all
+  end
 
   def show
     @posts = Post.find params[:id]

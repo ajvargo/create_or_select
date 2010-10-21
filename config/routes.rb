@@ -1,3 +1,4 @@
 CreateOrComplete::Application.routes.draw do
-  resources :posts, :only => [:show, :new, :create]
+  root :to => "posts#index"
+  resources :posts, :only => [:index, :show, :new, :create]
 end
